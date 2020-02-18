@@ -1,0 +1,15 @@
+INSERT INTO lbusage_test (currtime, uid, version, ver_major, ver_minor, ver_sub, architecture, DATE_FORMAT(DATE_ADD(`currtime`, INTERVAL -DAYOFWEEK(`currtime`)+1 DAY), '%Y-%m-%d')) as `week_date` 
+SELECT currtime, uid, version, ver_major, ver_minor, ver_sub, architecture AS 'week_date' ON DUPLICATE KEY UPDATE currtime, uid, version, ver_major, ver_minor, ver_sub, architecture, week_date
+
+INSERT INTO lbusage_test (currtime, uid, version, ver_major, ver_minor, ver_sub, architecture, DATE_FORMAT(DATE_ADD(`currtime`, INTERVAL -DAYOFWEEK(`currtime`)+1 DAY), '%Y-%m-%d')) as `week_date` 
+SELECT currtime, uid, version, ver_major, ver_minor, ver_sub, architecture, week_date ON DUPLICATE KEY UPDATE currtime, uid, version, ver_major, ver_minor, ver_sub, architecture, week_date from lbusage
+
+-- Normalisiert auf Datum am Sonntag
+SELECT currtime, DATE_FORMAT(DATE_ADD(`currtime`, INTERVAL -DAYOFWEEK(`currtime`)+1 DAY), '%Y-%m-%d') as currweek, DAYOFWEEK(`currtime`) AS `week_date` from lbusage ORDER by `currtime` desc
+
+
+
+-- Übernahme lbusage --> lbusage_test
+INSERT INTO lbusage_test (currtime, uid, version, ver_major, ver_minor, ver_sub, architecture, `week_date`)  
+SELECT currtime, uid, version, ver_major, ver_minor, ver_sub, architecture, DATE_FORMAT(DATE_ADD(`currtime`, INTERVAL -DAYOFWEEK(`currtime`)+1 DAY), '%Y-%m-%d')  as 
+`week_date` from lbusage order by currtime asc ON DUPLICATE KEY UPDATE `currtime`=VALUES(`currtime`), `version`=VALUES(`version`), ver_major=VALUES(ver_major), ver_minor=VALUES(ver_minor), ver_sub=VALUES(ver_sub), architecture=VALUES(architecture)

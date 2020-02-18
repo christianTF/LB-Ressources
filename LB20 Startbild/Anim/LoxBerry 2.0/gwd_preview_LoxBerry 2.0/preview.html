@@ -1,0 +1,34 @@
+<html><head>
+    <!--
+    Load various Web Components polyfills required by IE and Edge. While the polyfills are
+    not needed for other browsers, they're loaded irrespective of browser features because we rely
+    on the polyfill's `WebComponentsReady` event as a signal that the app is ready to be initialized
+    (see init.js).
+    -->
+    <!-- Polyfill Web Components. -->
+    <script src="webcomponentsjs/webcomponents-lite.js"></script>
+
+    <!-- Polyfill Web Animations. This file is necessary for some paper elements. -->
+    <script src="webcomponentsjs/web-animations-next-lite.min.js"></script>
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Roboto:regular">
+
+    <script src="preview_polymer.js"></script>
+
+    <style>
+      body {
+        margin: 0;
+      }
+
+      tf-creative-preview {
+        width: 100%;
+        height: 100%;
+      }
+    </style>
+  <script>window.gwdPreview = {"config":{"previewPath":"index.html","modes":["single","allsizes"],"sizes":["300x250","320x50","300x600","160x600","728x90","970x250","300x50","970x90","300x1050","120x60"],"breakpoints":null,"feeds":{},"feedNames":[],"reloadOnResize":false,"defaults":{"mode":"allsizes","modeSettings":{"single":{"size":"300x250","feed":null},"allsizes":{"sizes":["300x250","320x50","300x600","160x600","728x90","970x250","300x50","970x90","300x1050","120x60"],"feed":null}}}},"strings":{"MSG_ALL_FEEDS_MODE":"Alle Beispieldaten","MSG_ALL_SIZES_MODE":"Alle Gr\u00f6\u00dfen","MSG_CUSTOM":"Benutzerdefiniert","MSG_CUSTOM_SIZE":"Benutzerdefinierte Gr\u00f6\u00dfe","MSG_DESKTOP_MODE":"Computer","MSG_DEVICE":"Ger\u00e4t","MSG_MOBILE_MODE":"Mobil","MSG_NO_SAMPLE_DATA":"Keine Beispieldaten","MSG_NO_SAMPLE_DATA_TO_PREVIEW":"W\u00e4hlen Sie Beispieldaten aus, um eine Vorschau zu sehen.","MSG_NO_SIZES_TO_PREVIEW":"W\u00e4hlen Sie Gr\u00f6\u00dfen aus, um eine Vorschau zu sehen.","MSG_NONE_SELECTED":"Keine ausgew\u00e4hlt","MSG_PARALLAX_MODE":"Parallaxe","MSG_PREVIEW_MODE":"Vorschaumodus","MSG_RELOAD":"Neu laden","MSG_RELOAD_ALL":"Alle neu laden","MSG_ROTATE_DEVICE":"Ger\u00e4t drehen","MSG_SAMPLE_FEED":"Beispieldaten","MSG_SAMPLE_FEEDS":"Beispieldaten","MSG_SELECT_ALL":"Alle ausw\u00e4hlen","MSG_SELECT_NONE":"Gesamte Auswahl aufheben","MSG_SELECTED":"{num} ausgew\u00e4hlt","MSG_SHOW_SIZE":"Gr\u00f6\u00dfe anzeigen","MSG_SHOW_SIZES":"Gr\u00f6\u00dfen anzeigen","MSG_SINGLE_MODE":"Einzelne Gr\u00f6\u00dfe","MSG_VIEWPORT_SIZE":"Gr\u00f6\u00dfe des Darstellungsbereichs"}};</script></head>
+
+  <body>
+    <tf-creative-preview id="preview-app"></tf-creative-preview>
+  
+
+</body></html>
